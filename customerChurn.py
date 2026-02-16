@@ -75,29 +75,30 @@ contract_display_options = ['Month-to-month', 'One year', 'Two year']
 payment_method_display_options = ['Electronic check', 'Mailed check', 'Bank transfer (automatic)', 'Credit card (automatic)']
 
 
-raw_user_inputs['gender'] = st.sidebar.radio('Gender', gender_display_options, key='gender_ui')
-raw_user_inputs['SeniorCitizen'] = st.sidebar.radio('Senior Citizen', yes_no_display_options, key='seniorcitizen_ui')
-raw_user_inputs['Partner'] = st.sidebar.radio('Partner', yes_no_display_options, key='partner_ui')
-raw_user_inputs['Dependents'] = st.sidebar.radio('Dependents', yes_no_display_options, key='dependents_ui')
-raw_user_inputs['PhoneService'] = st.sidebar.radio('Phone Service', yes_no_display_options, key='phoneservice_ui')
-raw_user_inputs['MultipleLines'] = st.sidebar.selectbox('Multiple Lines', multiple_lines_display_options, key='multiplelines_ui')
-raw_user_inputs['InternetService'] = st.sidebar.selectbox('Internet Service', internet_service_display_options, key='internetservice_ui')
-raw_user_inputs['OnlineSecurity'] = st.sidebar.selectbox('Online Security', online_service_display_options, key='onlinesecurity_ui')
-raw_user_inputs['OnlineBackup'] = st.sidebar.selectbox('Online Backup', online_service_display_options, key='onlinebackup_ui')
-raw_user_inputs['DeviceProtection'] = st.sidebar.selectbox('Device Protection', online_service_display_options, key='deviceprotection_ui')
-raw_user_inputs['TechSupport'] = st.sidebar.selectbox('Tech Support', online_service_display_options, key='techsupport_ui')
-raw_user_inputs['StreamingTV'] = st.sidebar.selectbox('Streaming TV', online_service_display_options, key='streamingtv_ui')
-raw_user_inputs['StreamingMovies'] = st.sidebar.selectbox('Streaming Movies', online_service_display_options, key='streamingmovies_ui')
-raw_user_inputs['Contract'] = st.sidebar.selectbox('Contract', contract_display_options, key='contract_ui')
-raw_user_inputs['PaperlessBilling'] = st.sidebar.radio('Paperless Billing', yes_no_display_options, key='paperlessbilling_ui')
-raw_user_inputs['PaymentMethod'] = st.sidebar.selectbox('Payment Method', payment_method_display_options, key='paymentmethod_ui')
-raw_user_inputs['tenure'] = st.sidebar.slider('Tenure (months)', min_value=1.0, max_value=72.0, value=32.0, step=1.0, key='tenure_ui')
-raw_user_inputs['MonthlyCharges'] = st.sidebar.number_input('Monthly Charges', min_value=18.25, max_value=118.75, value=65.0, step=0.01, key='monthlycharges_ui')
-raw_user_inputs['TotalCharges'] = st.sidebar.number_input('Total Charges', min_value=18.80, max_value=8684.80, value=2000.0, step=0.01, key='totalcharges_ui')
+raw_user_inputs['gender'] = st.sidebar.radio("What's your customer's Gender", gender_display_options, key='gender_ui')
+raw_user_inputs['SeniorCitizen'] = st.sidebar.radio('Is the customer a Senior Citizen?', yes_no_display_options, key='seniorcitizen_ui')
+raw_user_inputs['Partner'] = st.sidebar.radio('Does the customer have a Partner?', yes_no_display_options, key='partner_ui')
+raw_user_inputs['Dependents'] = st.sidebar.radio('Does the customer have Dependents?', yes_no_display_options, key='dependents_ui')
+raw_user_inputs['PhoneService'] = st.sidebar.radio('Does the customer have a Phone Service subscription?', yes_no_display_options, key='phoneservice_ui')
+raw_user_inputs['MultipleLines'] = st.sidebar.selectbox('Deos the customer have Multiple Lines?', multiple_lines_display_options, key='multiplelines_ui')
+raw_user_inputs['InternetService'] = st.sidebar.selectbox('Does the customer have an Internet Service?', internet_service_display_options, key='internetservice_ui')
+raw_user_inputs['OnlineSecurity'] = st.sidebar.selectbox('Does the customer have Online Security subscription?', online_service_display_options, key='onlinesecurity_ui')
+raw_user_inputs['OnlineBackup'] = st.sidebar.selectbox('Does the customer have Online Backup?', online_service_display_options, key='onlinebackup_ui')
+raw_user_inputs['DeviceProtection'] = st.sidebar.selectbox('Does the customer have Device Protection subscription?>', online_service_display_options, key='deviceprotection_ui')
+raw_user_inputs['TechSupport'] = st.sidebar.selectbox('Does the customer have Tech Support subscription?', online_service_display_options, key='techsupport_ui')
+raw_user_inputs['StreamingTV'] = st.sidebar.selectbox('Does the customer have a Streaming TV subscription', online_service_display_options, key='streamingtv_ui')
+raw_user_inputs['StreamingMovies'] = st.sidebar.selectbox('Does the customer Stream Movies?', online_service_display_options, key='streamingmovies_ui')
+raw_user_inputs['Contract'] = st.sidebar.selectbox('What kind of contract does the customer have?', contract_display_options, key='contract_ui')
+raw_user_inputs['PaperlessBilling'] = st.sidebar.radio('Does the customer use Paperless Billing method?', yes_no_display_options, key='paperlessbilling_ui')
+raw_user_inputs['PaymentMethod'] = st.sidebar.selectbox('What kind of Payment Method does the customer use?', payment_method_display_options, key='paymentmethod_ui')
+raw_user_inputs['tenure'] = st.sidebar.slider('Tenure (months)?', min_value=1.0, max_value=72.0, value=32.0, step=1.0, key='tenure_ui')
+raw_user_inputs['MonthlyCharges'] = st.sidebar.number_input('What are the customer's Monthly Charges?', min_value=18.25, max_value=118.75, value=65.0, step=0.01, key='monthlycharges_ui')
+raw_user_inputs['TotalCharges'] = st.sidebar.number_input('What are the customer's Total Charges?', min_value=18.80, max_value=8684.80, value=2000.0, step=0.01, key='totalcharges_ui')
 
 
 if st.sidebar.button('Predict Churn'):
     try:
         predict(raw_user_inputs)
     except Exception as e:
+
         st.error(f"Prediction error: {str(e)}")
