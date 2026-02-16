@@ -93,7 +93,7 @@ raw_user_inputs['PaperlessBilling'] = st.sidebar.radio('Does the customer use Pa
 raw_user_inputs['PaymentMethod'] = st.sidebar.selectbox('What kind of Payment Method does the customer use?', payment_method_display_options, key='paymentmethod_ui')
 raw_user_inputs['tenure'] = st.sidebar.slider('Tenure (months)?', min_value=1.0, max_value=72.0, value=32.0, step=1.0, key='tenure_ui')
 raw_user_inputs['MonthlyCharges'] = st.sidebar.number_input("What are the customer's Monthly Charges?", min_value=18.25, max_value=118.75, value=65.0, step=0.01, key='monthlycharges_ui')
-raw_user_inputs['TotalCharges'] = st.sidebar.number_input('What are the customer's Total Charges?', min_value=18.80, max_value=8684.80, value=2000.0, step=0.01, key='totalcharges_ui')
+raw_user_inputs['TotalCharges'] = st.sidebar.number_input("What are the customer's Total Charges?", min_value=18.80, max_value=8684.80, value=2000.0, step=0.01, key='totalcharges_ui')
 
 
 if st.sidebar.button('Predict Churn'):
@@ -102,4 +102,5 @@ if st.sidebar.button('Predict Churn'):
     except Exception as e:
 
         st.error(f"Prediction error: {str(e)}")
+
 
